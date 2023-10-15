@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
 import { Movie } from 'src/app/modesl/movie.model';
 import { MoviesService } from 'src/app/services/movies.service';
+
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -8,7 +9,7 @@ import { MoviesService } from 'src/app/services/movies.service';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  movies: Movie[] = [];
+  public movies: Movie[] = [];
 
   constructor(private _moviesService: MoviesService) {}
 
