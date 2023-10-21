@@ -11,6 +11,7 @@ import { MoviesComponent } from './pages/movies/movies.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { ItemsBannerComponent } from './components/items-banner/items-banner.component';
+import { MovieItemComponent } from './components/movie-item/movie-item.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { ItemsBannerComponent } from './components/items-banner/items-banner.com
     MoviesComponent,
     SliderComponent,
     ItemsBannerComponent,
+    MovieItemComponent,
   ],
   imports: [
     BrowserModule,
