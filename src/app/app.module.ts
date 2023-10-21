@@ -10,6 +10,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { MoviesComponent } from './pages/movies/movies.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { HeaderComponent } from './shared/header/header.component';
+import { ItemsBannerComponent } from './components/items-banner/items-banner.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { HeaderComponent } from './shared/header/header.component';
     HomeComponent,
     MoviesComponent,
     SliderComponent,
+    ItemsBannerComponent,
   ],
   imports: [
     BrowserModule,
