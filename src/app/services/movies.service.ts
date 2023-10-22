@@ -1,3 +1,5 @@
+import { map, of, switchMap } from 'rxjs';
+
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
@@ -12,9 +14,18 @@ export class MoviesService {
 
   constructor(private _httpClient: HttpClient) {}
 
-  getMovies(type: string = 'upcoming') {
-    return this._httpClient.get<MovieDto>(
-      `${this.baseUrl}/movie/${type}?api_key=${this.apiKey}`
-    );
+  getMovies(type: string = 'upcoming', count: number = 12) {
+    return this._httpClient
+      .get<MovieDto>(`${this.baseUrl}/movie/${type}?api_key=${this.apiKey}`)
+      .pipe(
+        map(({ results }) => {
+          results.forEach((result) => {
+            result.type = 'Movie';
+          });
+
+          return results;
+        }),
+        map((movies) => movies.slice(0, count))
+      );
   }
 }

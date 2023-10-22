@@ -1,3 +1,5 @@
+import { map } from 'rxjs';
+
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
@@ -12,9 +14,18 @@ export class TvShowsService {
 
   constructor(private _httpClient: HttpClient) {}
 
-  getTVShows(type: string = 'popular') {
-    return this._httpClient.get<TVShowDto>(
-      `${this.baseUrl}/tv/${type}?api_key=${this.apiKey}`
-    );
+  getTVShows(type: string = 'popular', count: number = 12) {
+    return this._httpClient
+      .get<TVShowDto>(`${this.baseUrl}/tv/${type}?api_key=${this.apiKey}`)
+      .pipe(
+        map(({ results }) => {
+          results.forEach((result) => {
+            result.type = 'TVShow';
+          });
+
+          return results;
+        }),
+        map((tvShows) => tvShows.slice(0, count))
+      );
   }
 }
