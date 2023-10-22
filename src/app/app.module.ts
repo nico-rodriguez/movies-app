@@ -1,3 +1,5 @@
+import { PaginatorModule } from 'primeng/paginator';
+
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -29,6 +31,7 @@ import { HeaderComponent } from './shared/header/header.component';
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
+    PaginatorModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
