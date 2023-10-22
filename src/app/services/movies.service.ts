@@ -28,4 +28,20 @@ export class MoviesService {
         map((movies) => movies.slice(0, count))
       );
   }
+
+  searchMovies(page: number) {
+    return this._httpClient
+      .get<MovieDto>(
+        `${this.baseUrl}/movie/popular?page=${page}&api_key=${this.apiKey}`
+      )
+      .pipe(
+        map(({ results }) => {
+          results.forEach((result) => {
+            result.type = 'Movie';
+          });
+
+          return results;
+        })
+      );
+  }
 }

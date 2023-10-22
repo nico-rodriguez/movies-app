@@ -12,11 +12,11 @@ import { Component, Input, OnInit } from '@angular/core';
 export class ItemComponent implements OnInit {
   @Input() itemData: Movie | TVShow | null = null;
 
-  public readonly imageUrl: string = `https://image.tmdb.org/t/p/${IMAGE_SIZE.small}/${this.itemData?.poster_path}`;
+  public imageUrl!: string;
 
-  constructor() {}
-
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.imageUrl = `https://image.tmdb.org/t/p/${IMAGE_SIZE.small}${this.itemData?.poster_path}`;
+  }
 
   public isMovie(itemData: Movie | TVShow | null): itemData is Movie | null {
     return itemData === null || itemData.type === 'Movie';
