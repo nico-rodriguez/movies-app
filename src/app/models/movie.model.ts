@@ -1,4 +1,7 @@
-export interface Movie {
+import { Base } from './base.model';
+
+export interface Movie extends Base {
+  type: 'Movie';
   adult: boolean;
   backdrop_path: string;
   genre_ids: number[];

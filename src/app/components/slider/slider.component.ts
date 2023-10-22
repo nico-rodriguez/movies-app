@@ -1,12 +1,6 @@
-import { Movie } from 'src/app/modesl/movie.model';
+import { Movie } from 'src/app/models/movie.model';
 
-import {
-  animate,
-  state,
-  style,
-  transition,
-  trigger,
-} from '@angular/animations';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
