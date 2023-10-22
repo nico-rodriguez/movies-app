@@ -1,3 +1,4 @@
+import { IMAGE_SIZE } from 'src/app/constants/images';
 import { Movie } from 'src/app/models/movie.model';
 import { TVShow } from 'src/app/models/tvshow.model';
 
@@ -10,6 +11,8 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ItemComponent implements OnInit {
   @Input() itemData: Movie | TVShow | null = null;
+
+  public readonly imageUrl: string = `https://image.tmdb.org/t/p/${IMAGE_SIZE.small}/${this.itemData?.poster_path}`;
 
   constructor() {}
 

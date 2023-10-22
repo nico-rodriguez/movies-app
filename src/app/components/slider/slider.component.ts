@@ -1,3 +1,4 @@
+import { IMAGE_SIZE } from 'src/app/constants/images';
 import { Movie } from 'src/app/models/movie.model';
 
 import { animate, state, style, transition, trigger } from '@angular/animations';
@@ -24,6 +25,7 @@ export class SliderComponent implements OnInit {
   @Input() public items: Movie[] = [];
 
   public currentSlideIndex: number = 0;
+  public readonly imageBaseUrl: string = `https://image.tmdb.org/t/p/${IMAGE_SIZE.large}/`;
 
   private readonly SLIDE_INTERVAL = 5000;
 
