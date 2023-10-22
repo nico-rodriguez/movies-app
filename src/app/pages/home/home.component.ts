@@ -23,26 +23,26 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     return;
-    this._moviesService.getMovies('popular').subscribe((movies: any) => {
-      this.popularMovies = movies.results.map((result: any) => ({
+    this._moviesService.getMovies('popular').subscribe(({ results }) => {
+      this.popularMovies = results.map((result) => ({
         ...result,
         type: 'Movie',
       }));
     });
-    this._moviesService.getMovies('upcoming').subscribe((movies: any) => {
-      this.upcomingMovies = movies.results.map((result: any) => ({
+    this._moviesService.getMovies('upcoming').subscribe(({ results }) => {
+      this.upcomingMovies = results.map((result: any) => ({
         ...result,
         type: 'Movie',
       }));
     });
-    this._moviesService.getMovies('top_rated').subscribe((movies: any) => {
-      this.topRatedMovies = movies.results.map((result: any) => ({
+    this._moviesService.getMovies('top_rated').subscribe(({ results }) => {
+      this.topRatedMovies = results.map((result: any) => ({
         ...result,
         type: 'Movie',
       }));
     });
-    this._tvShowsService.getTVShows('popular').subscribe((tvShows: any) => {
-      this.popularTVShows = tvShows.results.map((result: any) => ({
+    this._tvShowsService.getTVShows('popular').subscribe(({ results }) => {
+      this.popularTVShows = results.map((result: any) => ({
         ...result,
         type: 'TVShow',
       }));

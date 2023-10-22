@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
+import { TVShowDto } from '../models/tvshow.model';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -11,7 +13,7 @@ export class TvShowsService {
   constructor(private _httpClient: HttpClient) {}
 
   getTVShows(type: string = 'popular') {
-    return this._httpClient.get(
+    return this._httpClient.get<TVShowDto>(
       `${this.baseUrl}/tv/${type}?api_key=${this.apiKey}`
     );
   }

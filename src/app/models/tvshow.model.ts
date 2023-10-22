@@ -16,3 +16,10 @@ export interface TVShow extends Base {
   vote_average: number;
   vote_count: number;
 }
+
+export interface TVShowDto {
+  page: number;
+  results: TVShow[];
+  total_pages: number;
+  total_results: number;
+}
