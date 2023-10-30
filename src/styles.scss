@@ -12,15 +12,14 @@
 @import "./styles/icons";
 
 /* Primeflex */
-@import url("~primeflex/primeflex.css");
-
-/* PrimeNG*/
-@import "~primeng/resources/themes/lara-light-blue/theme.css";
-// @import "~primeng/resources/themes/lara-light-indigo/theme.css";
-@import "~primeng/resources/primeng.css";
+@import "~primeflex/primeflex.css";
 
 /* PrimeIcons */
 @import "~primeicons/primeicons.css";
+
+/* PrimeNG*/
+@import "node_modules/primeng/resources/themes/lara-light-indigo/theme.css";
+@import "node_modules/primeng/resources/primeng.min.css";
 
 body {
   font-family: "Roboto", sans-serif;
