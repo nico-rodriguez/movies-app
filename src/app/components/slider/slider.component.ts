@@ -23,6 +23,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class SliderComponent implements OnInit {
   @Input() public items: Movie[] = [];
+  @Input() public isBanner: boolean = false;
 
   public currentSlideIndex: number = 0;
   public readonly imageBaseUrl: string = `https://image.tmdb.org/t/p/${IMAGE_SIZE.large}/`;
@@ -30,8 +31,10 @@ export class SliderComponent implements OnInit {
   private readonly SLIDE_INTERVAL = 5000;
 
   ngOnInit(): void {
-    setInterval(() => {
-      this.currentSlideIndex = ++this.currentSlideIndex % this.items.length;
-    }, this.SLIDE_INTERVAL);
+    if (!this.isBanner) {
+      setInterval(() => {
+        this.currentSlideIndex = ++this.currentSlideIndex % this.items.length;
+      }, this.SLIDE_INTERVAL);
+    }
   }
 }
