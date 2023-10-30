@@ -1,4 +1,5 @@
 import { PaginatorModule } from 'primeng/paginator';
+import { TabViewModule } from 'primeng/tabview';
 
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
@@ -11,10 +12,10 @@ import { ItemComponent } from './components/item/item.component';
 import { ItemsBannerComponent } from './components/items-banner/items-banner.component';
 import { SliderComponent } from './components/slider/slider.component';
 import { HomeComponent } from './pages/home/home.component';
+import { MovieComponent } from './pages/movie/movie.component';
 import { MoviesComponent } from './pages/movies/movies.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { HeaderComponent } from './shared/header/header.component';
-import { MovieComponent } from './pages/movie/movie.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { MovieComponent } from './pages/movie/movie.component';
     AppRoutingModule,
     HttpClientModule,
     PaginatorModule,
+    TabViewModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
