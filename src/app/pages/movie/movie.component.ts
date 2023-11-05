@@ -1,4 +1,4 @@
-import { Movie } from 'src/app/models/movie.model';
+import { Movie, MovieVideo } from 'src/app/models/movie.model';
 import { MoviesService } from 'src/app/services/movies.service';
 
 import { Component, OnInit } from '@angular/core';
@@ -13,6 +13,7 @@ import { IMAGE_SIZE } from '../../constants/images';
 })
 export class MovieComponent implements OnInit {
   public movie: Movie | null = null;
+  public movieVideos: MovieVideo[] = [];
   public imageUrl!: string;
 
   constructor(
@@ -23,6 +24,7 @@ export class MovieComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe(({ id }) => {
       this.getMovie(id);
+      this.getMovieVideos(id);
     });
   }
 
@@ -30,6 +32,12 @@ export class MovieComponent implements OnInit {
     this._moviesService.getMovie(id).subscribe((movie) => {
       this.movie = movie;
       this.imageUrl = `https://image.tmdb.org/t/p/${IMAGE_SIZE.medium}${this.movie?.poster_path}`;
+    });
+  }
+
+  getMovieVideos(id: string) {
+    this._moviesService.getMovieVideos(id).subscribe((movieVideos) => {
+      this.movieVideos = movieVideos;
     });
   }
 }

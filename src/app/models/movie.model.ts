@@ -29,6 +29,16 @@ export interface MovieDto {
   total_results: number;
 }
 
+export interface MovieVideo {
+  site: string;
+  key: string;
+}
+
+export interface MovieVideoDto {
+  id: number;
+  results: MovieVideo[];
+}
+
 export interface Genre {
   id: number;
   name: string;
