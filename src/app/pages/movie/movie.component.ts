@@ -4,6 +4,8 @@ import { MoviesService } from 'src/app/services/movies.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
+import { IMAGE_SIZE } from '../../constants/images';
+
 @Component({
   selector: 'app-movie',
   templateUrl: './movie.component.html',
@@ -11,6 +13,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class MovieComponent implements OnInit {
   public movie: Movie | null = null;
+  public imageUrl!: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -26,6 +29,7 @@ export class MovieComponent implements OnInit {
   getMovie(id: string) {
     this._moviesService.getMovie(id).subscribe((movie) => {
       this.movie = movie;
+      this.imageUrl = `https://image.tmdb.org/t/p/${IMAGE_SIZE.medium}${this.movie?.poster_path}`;
     });
   }
 }

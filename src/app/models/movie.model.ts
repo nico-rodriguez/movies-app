@@ -4,6 +4,7 @@ export interface Movie extends Base {
   type: 'Movie';
   adult: boolean;
   backdrop_path: string;
+  genres: Genre[];
   genre_ids: number[];
   id: number;
   original_language: string;
@@ -12,6 +13,9 @@ export interface Movie extends Base {
   popularity: number;
   poster_path: string;
   release_date: string;
+  revenue: number;
+  runtime: number;
+  status: string;
   title: string;
   video: boolean;
   vote_average: number;
@@ -23,4 +27,9 @@ export interface MovieDto {
   results: Movie[];
   total_pages: number;
   total_results: number;
+}
+
+export interface Genre {
+  id: number;
+  name: string;
 }
