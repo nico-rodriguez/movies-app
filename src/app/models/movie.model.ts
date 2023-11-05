@@ -34,6 +34,12 @@ export interface MovieVideo {
   key: string;
 }
 
+export interface MovieImages {
+  backdrops: {
+    file_path: string;
+  }[];
+}
+
 export interface MovieVideoDto {
   id: number;
   results: MovieVideo[];

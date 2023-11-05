@@ -1,4 +1,4 @@
-import { Movie, MovieVideo } from 'src/app/models/movie.model';
+import { Movie, MovieImages, MovieVideo } from 'src/app/models/movie.model';
 import { MoviesService } from 'src/app/services/movies.service';
 
 import { Component, OnInit } from '@angular/core';
@@ -14,7 +14,9 @@ import { IMAGE_SIZE } from '../../constants/images';
 export class MovieComponent implements OnInit {
   public movie: Movie | null = null;
   public movieVideos: MovieVideo[] = [];
+  public movieImages: MovieImages | null = null;
   public imageUrl!: string;
+  public imagesBaseUrl: string = `https://image.tmdb.org/t/p/${IMAGE_SIZE.large}`;
 
   constructor(
     private route: ActivatedRoute,
@@ -25,6 +27,7 @@ export class MovieComponent implements OnInit {
     this.route.params.subscribe(({ id }) => {
       this.getMovie(id);
       this.getMovieVideos(id);
+      this.getMovieImages(id);
     });
   }
 
@@ -38,6 +41,12 @@ export class MovieComponent implements OnInit {
   getMovieVideos(id: string) {
     this._moviesService.getMovieVideos(id).subscribe((movieVideos) => {
       this.movieVideos = movieVideos;
+    });
+  }
+
+  getMovieImages(id: string) {
+    this._moviesService.getMovieImages(id).subscribe((movieImages) => {
+      this.movieImages = movieImages;
     });
   }
 }
