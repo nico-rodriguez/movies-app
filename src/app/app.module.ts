@@ -16,6 +16,7 @@ import { MovieComponent } from './pages/movie/movie.component';
 import { MoviesComponent } from './pages/movies/movies.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { HeaderComponent } from './shared/header/header.component';
+import { VideoEmbedComponent } from './components/video-embed/video-embed.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { HeaderComponent } from './shared/header/header.component';
     ItemsBannerComponent,
     ItemComponent,
     MovieComponent,
+    VideoEmbedComponent,
   ],
   imports: [
     BrowserModule,
