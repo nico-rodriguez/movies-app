@@ -1,4 +1,9 @@
-import { Movie, MovieImages, MovieVideo } from 'src/app/models/movie.model';
+import {
+  Movie,
+  MovieCredits,
+  MovieImages,
+  MovieVideo,
+} from 'src/app/models/movie.model';
 import { MoviesService } from 'src/app/services/movies.service';
 
 import { Component, OnInit } from '@angular/core';
@@ -15,8 +20,10 @@ export class MovieComponent implements OnInit {
   public movie: Movie | null = null;
   public movieVideos: MovieVideo[] = [];
   public movieImages: MovieImages | null = null;
+  public movieCredits: MovieCredits | null = null;
   public imageUrl!: string;
-  public imagesBaseUrl: string = `https://image.tmdb.org/t/p/${IMAGE_SIZE.large}`;
+  public largeImagesBaseUrl: string = `https://image.tmdb.org/t/p/${IMAGE_SIZE.large}`;
+  public mediumImagesBaseUrl: string = `https://image.tmdb.org/t/p/${IMAGE_SIZE.medium}`;
 
   constructor(
     private route: ActivatedRoute,
@@ -28,6 +35,7 @@ export class MovieComponent implements OnInit {
       this.getMovie(id);
       this.getMovieVideos(id);
       this.getMovieImages(id);
+      this.getMovieCredits(id);
     });
   }
 
@@ -47,6 +55,12 @@ export class MovieComponent implements OnInit {
   getMovieImages(id: string) {
     this._moviesService.getMovieImages(id).subscribe((movieImages) => {
       this.movieImages = movieImages;
+    });
+  }
+
+  getMovieCredits(id: string) {
+    this._moviesService.getMovieCredits(id).subscribe((movieCredits) => {
+      this.movieCredits = movieCredits;
     });
   }
 }

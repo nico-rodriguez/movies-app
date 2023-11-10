@@ -1,3 +1,4 @@
+import { CarouselModule } from 'primeng/carousel';
 import { ImageModule } from 'primeng/image';
 import { PaginatorModule } from 'primeng/paginator';
 import { TabViewModule } from 'primeng/tabview';
@@ -40,6 +41,7 @@ import { HeaderComponent } from './shared/header/header.component';
     ImageModule,
     PaginatorModule,
     TabViewModule,
+    CarouselModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
