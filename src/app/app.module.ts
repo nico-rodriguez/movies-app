@@ -19,6 +19,7 @@ import { MovieComponent } from './pages/movie/movie.component';
 import { MoviesComponent } from './pages/movies/movies.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { HeaderComponent } from './shared/header/header.component';
+import { GenresComponent } from './pages/genres/genres.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { HeaderComponent } from './shared/header/header.component';
     ItemComponent,
     MovieComponent,
     VideoEmbedComponent,
+    GenresComponent,
   ],
   imports: [
     BrowserModule,
