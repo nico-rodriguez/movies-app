@@ -77,4 +77,12 @@ export class MoviesService {
       `${this.baseUrl}/movie/${id}/credits?api_key=${this.apiKey}`
     );
   }
+
+  getMoviesByGenre(genreId: string, page: number) {
+    return this._httpClient
+      .get<MovieDto>(
+        `${this.baseUrl}/discover/movie?with_genre=${genreId}&page=${page}&api_key=${this.apiKey}`
+      )
+      .pipe(map(({ results }) => results));
+  }
 }

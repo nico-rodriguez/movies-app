@@ -12,6 +12,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class MoviesComponent implements OnInit {
   public movies: Movie[] = [];
+  public genreId: string | null = null;
 
   constructor(
     private _moviesService: MoviesService,
@@ -21,15 +22,18 @@ export class MoviesComponent implements OnInit {
   ngOnInit(): void {
     this._route.params.pipe(take(1)).subscribe(({ genreId }) => {
       if (genreId) {
-        this.getMoviesByGenre(genreId);
+        this.genreId = genreId;
+        this.getMoviesByGenre(genreId, 1);
       } else {
         this.getMoviesPage(0);
       }
     });
   }
 
-  getMoviesByGenre(genreId: any) {
-    throw new Error('Method not implemented.');
+  getMoviesByGenre(genreId: string, page: number) {
+    this._moviesService.getMoviesByGenre(genreId, page).subscribe((movies) => {
+      this.movies = movies;
+    });
   }
 
   getMoviesPage(page: number) {
@@ -39,7 +43,12 @@ export class MoviesComponent implements OnInit {
   }
 
   public paginate(event: any) {
-    console.log({ event });
-    this.getMoviesPage(event.page + 1);
+    const page = event.page + 1;
+
+    if (this.genreId) {
+      this.getMoviesByGenre(this.genreId, page);
+    } else {
+      this.getMoviesPage(page);
+    }
   }
 }
