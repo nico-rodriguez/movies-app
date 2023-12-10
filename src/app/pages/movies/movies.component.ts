@@ -25,7 +25,7 @@ export class MoviesComponent implements OnInit {
         this.genreId = genreId;
         this.getMoviesByGenre(genreId, 1);
       } else {
-        this.getMoviesPage(0);
+        this.getMoviesPage(1);
       }
     });
   }
