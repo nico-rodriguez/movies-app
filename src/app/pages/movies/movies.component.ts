@@ -13,6 +13,7 @@ import { ActivatedRoute } from '@angular/router';
 export class MoviesComponent implements OnInit {
   public movies: Movie[] = [];
   public genreId: string | null = null;
+  public searchValue: string | null = null;
 
   constructor(
     private _moviesService: MoviesService,
@@ -30,14 +31,14 @@ export class MoviesComponent implements OnInit {
     });
   }
 
-  getMoviesByGenre(genreId: string, page: number) {
+  public getMoviesByGenre(genreId: string, page: number) {
     this._moviesService.getMoviesByGenre(genreId, page).subscribe((movies) => {
       this.movies = movies;
     });
   }
 
-  getMoviesPage(page: number) {
-    this._moviesService.searchMovies(page).subscribe((movies) => {
+  public getMoviesPage(page: number, searchValue?: string) {
+    this._moviesService.searchMovies(page, searchValue).subscribe((movies) => {
       this.movies = movies;
     });
   }
@@ -47,8 +48,14 @@ export class MoviesComponent implements OnInit {
 
     if (this.genreId) {
       this.getMoviesByGenre(this.genreId, page);
+    } else if (this.searchValue) {
+      this.getMoviesPage(page, this.searchValue);
     } else {
       this.getMoviesPage(page);
     }
+  }
+
+  public searchByValue() {
+    this.searchValue && this.getMoviesPage(1, this.searchValue);
   }
 }

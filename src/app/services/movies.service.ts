@@ -4,7 +4,13 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { GenresDto } from '../models/genre.model';
-import { Movie, MovieCredits, MovieDto, MovieImages, MovieVideoDto } from '../models/movie.model';
+import {
+  Movie,
+  MovieCredits,
+  MovieDto,
+  MovieImages,
+  MovieVideoDto,
+} from '../models/movie.model';
 
 @Injectable({
   providedIn: 'root',
@@ -36,20 +42,20 @@ export class MoviesService {
     );
   }
 
-  searchMovies(page: number) {
-    return this._httpClient
-      .get<MovieDto>(
-        `${this.baseUrl}/movie/popular?page=${page}&api_key=${this.apiKey}`
-      )
-      .pipe(
-        map(({ results }) => {
-          results.forEach((result) => {
-            result.type = 'Movie';
-          });
+  searchMovies(page: number, searchValue?: string) {
+    const url = searchValue
+      ? `${this.baseUrl}/search/movie?page=${page}&query=${searchValue}&api_key=${this.apiKey}`
+      : `${this.baseUrl}/movie/popular?page=${page}&query=${searchValue}&api_key=${this.apiKey}`;
 
-          return results;
-        })
-      );
+    return this._httpClient.get<MovieDto>(url).pipe(
+      map(({ results }) => {
+        results.forEach((result) => {
+          result.type = 'Movie';
+        });
+
+        return results;
+      })
+    );
   }
 
   getMovieVideos(id: string) {
